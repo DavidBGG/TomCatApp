@@ -1,0 +1,82 @@
+def info_df_maker(train_set):
+    mean = []
+    std = []
+    for col in train_set.columns:
+        mean.append(train_set[col].mean())
+        std.append(statistics.stdev(train_set[col]))
+
+    return pd.DataFrame({'mean': mean, 'std': std}, index=X.columns)
+	
+	
+	
+	
+	
+	x_train_scaled = train_set
+    x_train_scaled = x_train_scaled.drop(fictive_attr_name, 1)
+    trained_scaling_info = info_df_maker(train_set)
+    for col in train_set.columns:
+        mean = train_set[col].mean()
+        std = statistics.stdev(train_set[col])
+        new_values = []
+        for original_value in train_set[col]:
+            if(std!=0):
+                new_values.append((original_value - mean) / std)
+        x_train_scaled[col] = new_values
+    x_train_scaled.insert(0,fictive_attr_name,1)
+    return trained_scaling_info, x_train_scaled
+	
+	
+	def scale_fit_transform(train_set, fictive_attr_name):
+    # YOUR CODE HERE
+    x_train_scaled = train_set
+    x_train_scaled = x_train_scaled.drop(fictive_attr_name, 1)
+    
+                                         
+    for col in train_set.columns:
+        mean = train_set[col].mean()
+        std = statistics.stdev(train_set[col])
+        new_values = []
+        for original_value in train_set[col]:
+            if(std!=0):
+                new_values.append((original_value - mean) / std)
+        #x_train_scaled[col] = new_values
+        
+    trained_scaling_info =  train_set
+    x_train_scaled.insert(0,fictive_attr_name,1)
+                                         
+    return trained_scaling_info, x_train_scaled
+	
+	
+	
+	
+	
+	def scale_fit_transform(train_set, fictive_attr_name):
+    # YOUR CODE HERE
+    train_set = train_set.drop(fictive_attr_name, 1)
+    x_train_scaled = train_set
+    #x_train_scaled = x_train_scaled.drop(fictive_attr_name, 1)
+    trained_scaling_info = info_df_maker(train_set)
+    
+    for col in train_set.columns:
+        mean = train_set[col].mean()
+        display(train_set)
+        display(train_set[col])
+        std = np.std(train_set[col])
+        print('this is the std:')
+        print(std)
+        new_values = []
+        for original_value in train_set[col]:
+            print(original_value)
+            if(std!=0):
+                new_values.append((original_value - mean) / std)
+        print('Shlomie ha meleh')        
+        display(new_values)
+        print(new_values)
+        x_train_scaled[col] = new_values
+        
+    x_train_scaled.insert(0,fictive_attr_name,1)
+    return trained_scaling_info, x_train_scaled
+	
+	
+	
+	
